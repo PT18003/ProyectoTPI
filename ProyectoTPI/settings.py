@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'r508#k@)jn*x4&%$=os@-zrx!k+f+8%)j^k7&n2=@3&(!b+&3w'
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = os.getenv("DEBUG", "False") == "True"
-DEBUG = True
+DEBUG = False
 #ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 ALLOWED_HOSTS = ['206.81.9.193']
 
@@ -84,7 +84,7 @@ DATABASES = {
         'HOST' : 'localhost',
         'DATABASE_PORT' : '5432',
     }
-
+}
 
 
 # Password validation
