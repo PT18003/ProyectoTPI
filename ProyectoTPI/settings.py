@@ -22,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
-
+#SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+SECRET_KEY = 'r508#k@)jn*x4&%$=os@-zrx!k+f+8%)j^k7&n2=@3&(!b+&3w'
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = os.getenv("DEBUG", "False") == "True"
 DEBUG = True
@@ -75,19 +75,16 @@ WSGI_APPLICATION = 'ProyectoTPI.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-if os.getenv("DATABASE_URL", "") != "":
-    r = urlparse(os.environ.get("DATABASE_URL"))
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.path.relpath(r.path,"/"),
-            'USER' : r.username, #usuario postgres (o puedes crear uno propio)
-            'PASSWORD' : r.password, #contraseña de usuario postgres u otro
-            'HOST' : r.hostname,
-            'PORT' : r.port,
-            'OPTIONS' : {'sslmode':'require'},
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'audios',
+        'USER' : 'postgres', #usuario postgres (o puedes crear uno propio)
+        'PASSWORD' : '123456', #contraseña de usuario postgres u otro
+        'HOST' : 'localhost',
+        'DATABASE_PORT' : '5432',
     }
+
 
 
 # Password validation
@@ -127,4 +124,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+#STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
