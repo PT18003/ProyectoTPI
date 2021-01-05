@@ -75,17 +75,19 @@ WSGI_APPLICATION = 'ProyectoTPI.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'audios',
-        'USER' : 'postgres', #usuario postgres (o puedes crear uno propio)
-        'PASSWORD' : '123456', #contraseña de usuario postgres u otro
-        'HOST' : '127.0.0.1',
-        'DATABASE_PORT' : '5432',
+if os.getenv("DATABASE_URL", "") != "":
+    r = urlparse(os.environ.get("DATABASE_URL"))
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.path.relpath(r.path,"/"),
+            'USER' : r.username, #usuario postgres (o puedes crear uno propio)
+            'PASSWORD' : r.password, #contraseña de usuario postgres u otro
+            'HOST' : r.hostname,
+            'PORT' : r.port,
+            'OPTIONS' : {'sslmode':'require'},
+        }
     }
-}
 
 
 # Password validation
